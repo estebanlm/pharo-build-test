@@ -29,6 +29,9 @@ echo -e "\e[0m"
 ./pharo ci.image config http://smalltalkhub.com/mc/Pharo/ci/main ConfigurationOfCI --install=stable
 ./pharo ci.image eval "(ConfigurationOfCI project version: #stable) versionNumber"
 
+export PHARO_CI_USER=`./pharo ci.image eval "IntegrationManager userName"`
+export PHARO_CI_PWD=`./pharo ci.image eval "IntegrationManager password"`
+
 # EXECUTE TESTS
 echo -e ""
 echo -e "\e[32m================="
