@@ -1,5 +1,8 @@
 #! /bin/bash
 
+#fake jenkins (for test, we should remove it later)
+JENKINS_URL=true
+
 # DOWNLOAD THE EXTERNAL HTML RESOURCES
 echo -e ""
 echo -e "\e[32m======================"
