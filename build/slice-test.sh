@@ -1,5 +1,6 @@
 #! /bin/bash
 
+export BUILD_URL="$TRAVIS_JOB_ID"
 #fake jenkins (for test, we should remove it later)
 export JENKINS_URL=true
 
@@ -27,8 +28,9 @@ echo -e "\e[32m=============="
 echo -e "\e[0m"
 ./pharo Pharo.image save ci --delete-old
 ./pharo ci.image config http://smalltalkhub.com/mc/Pharo/ci/main ConfigurationOfCI --install=stable
-./pharo ci.image eval "(ConfigurationOfCI project version: #stable) versionNumber"
-
+echo -e ""
+echo -e "Using CI version: `./pharo ci.image eval "(ConfigurationOfCI project version: #stable) versionNumber"`"
+# Obtain user/password
 export PHARO_CI_USER=`./pharo ci.image eval "IntegrationManager userName" | sed "s/'//g"`
 export PHARO_CI_PWD=`./pharo ci.image eval "IntegrationManager password" | sed "s/'//g"`
 
