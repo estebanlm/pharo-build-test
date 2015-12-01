@@ -1,7 +1,7 @@
 language: smalltalk
 sudo: false
 smalltalk: Pharo-5.0
-script: build/slice-test.sh
+script: build/issue-test.sh
 addons:
   apt:
     packages:

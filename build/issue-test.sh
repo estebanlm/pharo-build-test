@@ -1,6 +1,6 @@
 #! /bin/bash
 
-export BUILD_URL="$TRAVIS_JOB_ID"
+export BUILD_URL="https://travis-ci.org/estebanlm/pharo-build-test/builds/$TRAVIS_BUILD_ID"
 #fake jenkins (for test, we should remove it later)
 export JENKINS_URL=true
 
@@ -40,4 +40,10 @@ echo -e "\e[32m================="
 echo -e "\e[32m= EXECUTE TESTS ="
 echo -e "\e[32m================="
 echo -e "\e[0m"
-./pharo ci.image ci slice test --html-resources="file://./bootstrap/" --update-issue --next
+
+if [ -n "$ISSUE" ]; then
+	TO_VALIDATE="--issue=$ISSUE"
+else
+	TO_VALIDATE="--update-issue --next"
+fi
+./pharo ci.image ci slice test --html-resources="file://./bootstrap/" $TO_VALIDATE
