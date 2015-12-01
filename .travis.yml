@@ -1,0 +1,8 @@
+language: smalltalk
+sudo: false
+smalltalk: Pharo-5.0
+script: build/slice-test.sh
+addons:
+  apt:
+    packages:
+      - libssl1.0.0:i386
